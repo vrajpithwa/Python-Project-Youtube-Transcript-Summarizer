@@ -1,0 +1,317 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <title>Youtube Transcript Summarizer</title>
+    <style>
+        *{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+#hero{
+    width: 100%;
+    height: 100vh;
+    background-image: url(/static/bg2.png);
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+.navbar{
+    width: 90%;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    z-index: 10;
+}
+.navbar .logo{
+    width: 120px;
+    margin: 30px 0;
+    cursor: pointer;
+}
+.user {
+    display: flex;
+    align-items: center;
+}
+.user img{
+    width: 30px;
+    margin-left: 50px;
+    cursor: pointer;
+}
+button{
+    padding: 8px 25px;
+    background: transparent;
+    outline: none;
+    border: 2px solid #fff;
+    border-radius: 20px;
+    color: #fff;
+    font-size:20px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.marq{
+      font-size: 14px;
+      font-family: Georgia (serif); 
+      color: #ffffff;
+      background-color: rgba(86, 86, 86, 0.3);
+      backdrop-filter: blur(10px);
+    }
+.container{
+    
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
+    left: 0;
+    top: 0;
+    width: 50%;
+    height: 60vh;
+}
+.info{
+    width: 550px;
+    color: #fff;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50);
+}
+.info h1{
+    margin-top: -190px;
+    font-size: 60px;
+    letter-spacing: 10px;
+    font-family: Gentona;
+    /* filter: blur(add = 1, direction = 220, strength = 10); */
+    /* filter: glow(color=grey strength=30); */
+}
+.info input{
+    width: 50%;
+    padding: 8px 10px;
+    background: transparent;
+    outline: none;
+    border: 2px solid #fff;
+    border-radius: 20px;
+    color: #fff;
+    font-size: 12px;
+}
+
+::placeholder{
+   color: #ccc; 
+}
+
+button1{
+    padding: 80px 100px;
+    background: transparent;
+    outline: none;
+    border: 2px solid #fff;
+    border-radius: 20px;
+    color: #fff;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+}
+    body {
+    margin: 0;
+    }
+
+    /* ====================
+        Background
+    =======================*/
+
+    .background {
+    width: 100vw;
+    height: 100vh;
+    animation: pulse 5s infinite;
+    overflow: hidden;
+    }
+
+    @keyframes pulse {
+    0% {background: #d10053;}
+    50% {background: #cc145e;}
+    100% {background: #d10053;}
+    }
+
+    .background p {
+    z-index: 999;
+    margin: 0;
+    color: #ffffff;
+    text-transform: uppercase;
+    font-family: lato;
+    font-size: 50px;
+    position: absolute;
+    left: 50%;
+    top: 10%;
+    transform: translateX(-50%);
+    }
+
+    .elements {
+    height: 100vh;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-around;
+    align-items: center;
+    }
+
+    /* ====================
+        Squares
+    =======================*/
+
+    .square {
+    border: 10px dashed #db0f60;
+    }
+
+    .sq2{
+    animation: move1 180s infinite;
+    animation-timing-function: linear;
+    width: 1110px;
+    height: 1110px;
+    }
+
+    @keyframes move1 {
+    0% {
+        transform: rotate(0deg);
+        opacity: 0.5;
+    }
+    
+    50% {
+        width: 1000px;
+        height: 1000px;
+    }
+    
+    100% {
+        transform: rotate(1000deg);
+        opacity: 1;
+    }
+    }
+
+    .sq3 {
+    width: 600px;
+    height: 600px;
+    animation: move1 120s infinite;
+    animation-timing-function: linear;
+    }
+
+    .sq1 {
+    width: 500px;
+    height: 500px;
+    animation: move1 100s infinite;
+    animation-timing-function: linear;
+    }
+
+    .wrapper {
+     
+     position:absolute;
+     left: 50%;
+     top: 50%;
+     transform: translate(-50%,-50%);
+     margin-top: 130px;
+   }
+   
+   .search-txt {
+   
+       color: rgb(0, 0, 0);
+       background:whitesmoke;
+       border: none;
+       border-radius: 50px;
+       padding: 30px;
+       font-size: 12px;
+       width: 0px;
+       transition: 0.10s;
+       box-sizing: border-box;
+       font-size: 20px;
+       height: 60px;
+       
+   /* border: white solid; */
+   }
+   .simg {
+     position: absolute;
+     top: 5px;
+     right: 5px;
+     background:none;
+     border: 0.5px rgba(255, 255, 255, 0) solid;
+     height: 10%;
+     width: 10%;
+     padding: 10px;
+     background:transparent; 
+     border-radius: 50px;
+     transition: 0.5s;
+   }
+   
+   /* Hovering  */
+   
+    .wrapper:hover > .search-txt {
+   width: 400px;
+   transition: 0.5s;
+   
+   }
+   
+   .wrapper:hover > img {
+   transition: 0.7s;
+   background-color: white;
+   
+   
+   }
+   .dmgt-text {
+    color: #ffffff;
+    font-family: cursive;
+    padding-top: 160px;
+    text-align: center;
+  }
+    </style>
+  </head>
+  <body >
+    <form action = '/new' method="POST">
+        <div class="background">
+        <div class="navbar">
+            <img src="static/logo.png" class="logo">
+            <div class="user">
+                <a href="/explore">
+                <button action = "/expore" type="button">Explore</button>
+                </a>
+            </div>
+          </div>
+          <marquee  class="marq"> <b>Disclaimer: Youtube transcript summarizer only works for the videos having subtitles in the text formate not in music or the jpg along with the video.</b></marquee>
+          <div class="container">
+            <div class="info">
+                <h1>SUMMARIZE HERE</h1>
+                <!-- <input type="text" name ='input' id="input" placeholder="Paste the link here" > -->
+            </div>
+            <div class="dmgt-text">
+                Hover on the search button paste the link & press "ENTER" to proceed
+            </div>
+          </div>
+          <div class="elements">
+            <div class="square sq1"></div>
+            <div class="square sq2"></div>
+            <div class="square sq3"></div>
+          </div> 
+      </div>
+          
+          <div class="wrapper">
+            
+            <input class="search-txt" name = "input" type="text" id="input" placeholder="Paste the link here">
+            <img src="static/search.png" class = "simg" style="height: 50px;width: 50px;">
+            
+        </div>
+            
+    </form>
+    
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    -->
+ </body>
+</html>
